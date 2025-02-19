@@ -1,0 +1,29 @@
+.section {
+  display: flex;
+  position: fixed;
+}
+
+.content-overlay {
+  margin-top: 1vh;
+  width: 76%;
+  font-size: 1vw;
+  position: absolute;
+  z-index: 2;
+  color: var(--text-color);
+  left: 22%;
+  text-align: end;
+}
+
+.carousel-background {
+  width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+}

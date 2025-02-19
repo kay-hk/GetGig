@@ -1,0 +1,324 @@
+/* Fonts */
+@import url("fonts/kihim.css");
+@import url("fonts/lato.css");
+@import url("fonts/clash-display.css");
+@import url("fonts/lemonmilk.css");
+@import url("fonts/noto-music.css");
+
+:root {
+  --background-color: #14141e;
+  --background-overlay: rgba(0, 0, 0, 0.5);
+  --text-color: white;
+  --active-color: white;
+  --text-color-muted: rgba(255, 255, 255, 0.75);
+  --hover-color: rgb(113, 200, 127);
+  --hover-compliment: rgb(236, 113, 200);
+  --button-color: black;
+  --font-family: "Lato", serif;
+  --search-shadow: rgb(87, 79, 176,0.75);
+  --search-shadow-analogue: rgb(176, 79, 120,0.75);
+}
+
+/* general */
+
+body {
+  background-color: var(--background-color);
+  background-image: url("../images/seamless-grunge-pattern.png");
+  background-repeat: repeat;
+  color: var(--text-color);
+}
+
+form {
+  margin: auto;
+}
+
+tbody {
+  color: var(--text-color);
+  background-color: var(--background-overlay);
+  border-color: var(--background-overlay);
+  width: 90vw;
+}
+
+h1 {
+  margin-top: 0;
+  font-family: "Kihim-Regular" !important;
+  color: var(--text-color);
+  font-size: 4vh;
+}
+
+h2 {
+  font-family: "lemonmilk-bold";
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--hover-color);
+  transition: color 0.5s ease-in-out;
+  text-decoration: none;
+}
+
+a:visited{
+  color: var(--hover-compliment)
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+/* list */
+
+ul {
+  list-style: none; 
+  padding-left: 0;
+}
+
+li {
+  font-size: 1.5rem;
+  font-family: "Noto Music", sans-serif;
+  position: relative;
+  padding-top: 0.5rem;
+  padding-left: 1.8rem; 
+  padding-bottom: 0.5rem;
+}
+
+li::before {
+  content: var(--music-icon, "♪");
+  font-family: "Noto Music", sans-serif;
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* main container settings  */
+
+.container {
+  margin-top: 2vh;
+  max-width: 80%;
+  font-family: "Lato", serif;
+  columns: 2;
+  column-gap: 1rem;
+  margin-bottom: 2vh;
+}
+
+.container-inner {
+  background-color: var(--background-overlay);
+  border-radius: 1vh;
+  padding: 2vh;
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.container-search {
+  margin: auto;
+  max-width: 80%;
+}
+
+.container-isotophe {
+  margin: 2vh auto;
+  width: 80%;
+  font-family: "Lato", serif;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    column-count: 1;
+  }
+}
+
+/* footer settings */
+
+footer {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: auto;
+  background-color: var(--background-color);
+}
+
+.text-muted {
+  font-size: 1.2rem;
+  font-family: "Lato", serif;
+  --bs-text-opacity: 1;
+  color: var(--text-color-muted) !important;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  margin: 0 10px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--hover-color);
+}
+
+/* glitch nav font */
+
+.nav-font,
+.nav-font::after {
+  padding: 16px 20px;
+  /* background: linear-gradient(45deg, transparent 5%, var(--button-color) 5%); */
+  border: 0;
+  color: var(--text-color);
+  letter-spacing: 3px;
+  line-height: 1;
+  outline: transparent;
+  position: relative;
+}
+
+/* glitch button */
+
+.glitch-button,
+.glitch-button::after {
+  padding: 16px 20px;
+  margin-left: 0.5%;
+  font-size: 18px;
+  background: linear-gradient(45deg, transparent 5%, var(--button-color) 5%);
+  border: 0;
+  color: var(--text-color);
+  letter-spacing: 3px;
+  line-height: 1;
+  box-shadow: 6px 0px 0px var(--hover-color);
+  outline: transparent;
+  position: relative;
+}
+
+/* glitch effect  */
+
+.glitch-button::after,
+.nav-font::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  content: "GETGIG";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00ffb1 3%,
+    #00ffb1 5%,
+    var(--button-color) 5%
+  );
+  text-shadow: -3px -3px 0px #ff0000, 3px 3px 0px #00e6f6;
+  clip-path: var(--slice-0);
+}
+
+.nav-font::after {
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00ffb1 3%,
+    #00ffb1 5%,
+    var(--background-color) 5%
+  );
+}
+
+.glitch-button:hover::after,
+.nav-font:hover::after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+.glitch-button:hover,
+.nav-font:hover {
+  box-shadow: 15px var(--hover-color);
+}
+
+/* search  */
+.search-input {
+  max-width: 15rem;
+  background-color: var(--background-overlay);
+  border: none;
+  padding: 1.3rem;
+  border-radius: 1rem;
+  outline: none;
+  color: var(--text-color)
+}
+
+.search-input:focus {
+  animation: rotateShadow 2s infinite linear;
+}
+
+@keyframes rotateShadow {
+  0% {
+    box-shadow: -2px -2px 8px 1px var(--search-shadow), 2px 2px 8px 1px var(--search-shadow-analogue);
+  }
+  25% {
+    box-shadow: -2px 2px 8px 1px var(--search-shadow), 2px -2px 8px 1px var(--search-shadow-analogue);
+  }
+  50% {
+    box-shadow: 2px 2px 8px 1px var(--search-shadow), -2px -2px 8px 1px var(--search-shadow-analogue);
+  }
+  75% {
+    box-shadow: 2px -2px 8px 1px var(--search-shadow), -2px 2px 8px 1px var(--search-shadow-analogue);
+  }
+  100% {
+    box-shadow: -2px -2px 8px 1px var(--search-shadow), 2px 2px 8px 1px var(--search-shadow-analogue);
+  }
+}

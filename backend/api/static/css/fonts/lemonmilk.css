@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'lemonmilk-bold';
+    src: url('../../fonts/lemonmilk-bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'lemonmilk-regular';
+    src: url('../../fonts/lemonmilk-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: bold;
+}

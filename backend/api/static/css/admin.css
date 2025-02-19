@@ -1,0 +1,41 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.admin-button {
+  width: 250px;
+  padding: 14px;
+  background-color: rgb(71, 38, 90);
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-family: "Lato";
+}
+
+.admin-button:hover {
+  background-color: var(--hover-color);
+  color: white;
+  border-color: black;
+}
+
+.admin-button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+  .admin-button {
+    width: 200px;
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,54 @@
+{% extends 'getgig/main.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+      <div class="container-inner mb-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+          augue in augue luctus cursus. Duis at sagittis magna. Aliquam imperdiet
+          gravida ex vel laoreet. In bibendum commodo varius. Curabitur condimentum
+          elit neque, sed vehicula erat finibus nec. Vivamus luctus accumsan mi in
+          aliquet. Suspendisse nec lobortis velit, ac rhoncus turpis. Phasellus eu
+          felis et diam ullamcorper volutpat eu nec lacus. Etiam gravida dolor eget
+          gravida condimentum.
+        </p>
+      </div>
+      <div class="container-inner">
+        <form method="post" class="contact">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                  <h2>{{ form.first_name.label|upper }}</h2>
+                </label>
+                {{ form.first_name }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                  <h2>{{ form.last_name.label|upper }}</h2>
+                </label>
+                {{ form.last_name }}
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label">
+              <h2>{{ form.email.label|upper }}</h2>
+            </label>
+            {{ form.email }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ form.message.id_for_label }}" class="form-label">
+              <h2>{{ form.message.label|upper }}</h2>
+            </label>
+            {{ form.message }}
+          </div>
+          <button type="submit" class="btn btn-primary glitch-button">submit</button>
+        </form>
+      </div>
+    </div>
+    {% endblock %}

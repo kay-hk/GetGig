@@ -1,0 +1,93 @@
+.mybookings h2 {
+  font-family: "lemonmilk-bold";
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-top: 2vh;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+.mybookings table {
+  width: 80%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mybookings table, th, td {
+  border: 1px solid var(--background-overlay);
+}
+
+.mybookings thead {
+  background-color: var(--background-overlay);
+  color: var(--text-color);
+}
+
+.mybookings th {
+  padding: 1rem;
+  text-align: left;
+  font-family: "Lato", sans-serif;
+}
+
+.mybookings tbody {
+  background-color: var(--background-overlay);
+}
+
+.mybookings td {
+  padding: 1rem;
+  font-family: "Lato", sans-serif;
+}
+
+.mybookings tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mybookings tr:hover {
+  background-color: rgba(113, 200, 127, 0.5);
+  cursor: pointer;
+}
+
+.mybookings td, .mybookings th {
+  text-align: center;
+}
+
+.mybookings td {
+  color: var(--text-color);
+}
+
+.mybookings td a {
+  color: var(--hover-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mybookings td a:hover {
+  color: var(--hover-compliment);
+}
+
+
+.mybookings p {
+  text-align: center;
+  color: var(--text-color-muted);
+  font-size: 1.2rem;
+  font-family: "Lato", sans-serif;
+  margin-top: 2vh;
+}
+
+
+@media screen and (max-width: 768px) {
+  .mybookings table {
+    width: 100%;
+  }
+
+  .mybookings th, .mybookings td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .mybookings h2 {
+    font-size: 1.5rem;
+  }
+}

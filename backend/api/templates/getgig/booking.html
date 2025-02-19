@@ -1,0 +1,133 @@
+{% load static %}
+<link href="{% static 'css/booking.css' %}" rel="stylesheet" />
+<body>
+  <form class="booking" name="booking" method="post" action="{% url 'booktickets' festival_id=festival.fid %}">
+    {% csrf_token %}
+
+    <div>
+      <label class="booking-label" for="tuemail">EMAIL:</label>
+      <input
+        type="email"
+        id="tuemail"
+        name="tuemail"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <div>
+      <label class="booking-label" for="tuname">NAME:</label>
+      <input
+        type="text"
+        id="tuname"
+        name="tuname"
+        placeholder="Enter your name"
+      />
+    </div>
+
+    <div>
+      <label class="booking-label" for="tudate">DATE:</label>
+      <input type="date" id="tudate" name="tudate" />
+    </div>
+
+    <div>
+      <label class="booking-label" for="ticket_type_id">TICKET TYPE:</label>
+      <select id="ticket_type_id" name="ticket_type_id">
+        <option value="">Select type</option>
+        {% for ticket in ticket_types %}
+          <option value="{{ ticket.id }}">{{ ticket.ticket_type_name }} - ${{ ticket.ticket_price }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+      <label class="booking-label" for="tunumberoftickets">NUMBER OF TICKETS:</label>
+      <input
+        type="number"
+        id="tunumberoftickets"
+        name="tunumberoftickets"
+        value="1"
+        min="1"
+        placeholder="Quantity"
+      />
+    </div>
+
+    <div>
+      <label class="booking-label">TICKET PRICE:</label>
+      <div class="booking-label" id="price">$0</div>
+    </div>
+
+    <div>
+      <label class="booking-label">TOTAL PRICE:</label>
+      <div class="booking-label" id="totalprice">$0</div>
+    </div>
+
+    <div>
+      <input type="submit" name="book" value="BOOK" />
+    </div>
+  </form>
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let ticketPrices = {};
+
+      async function fetchTicketPrices() {
+        try {
+            const response = await fetch('/ticket_prices/');
+            const data = await response.json();
+
+            console.log("Fetched Ticket Prices:", data);  // ✅ Debugging API response
+
+            const ticketTypeSelect = document.getElementById("ticket_type_id");
+            ticketTypeSelect.innerHTML = '<option value="">Select type</option>';
+
+            ticketPrices = {};  // ✅ Reset ticketPrices object
+
+            data.forEach(ticket => {
+                console.log("Processing Ticket:", ticket);  // ✅ Debugging each ticket
+
+                if (!ticket.id) {
+                    console.error("❌ Error: Missing `id` field in API response for ticket:", ticket);
+                }
+
+                ticketPrices[ticket.id] = ticket.ticket_price;  // ✅ Store price using ID
+
+                const option = document.createElement("option");
+                option.value = ticket.id;  // ✅ Ensure correct value
+                option.textContent = `${ticket.ticket_type_name} - $${ticket.ticket_price}`;
+                ticketTypeSelect.appendChild(option);
+            });
+
+            console.log("Final Ticket Prices Object:", ticketPrices);  // ✅ Debugging
+
+            updatePrices();  // ✅ Update price display
+
+        } catch (error) {
+            console.error("Error fetching ticket prices:", error);
+        }
+      }
+
+      function updatePrices() {
+          const ticketTypeSelect = document.getElementById("ticket_type_id");  // ✅ Correct ID
+          const quantityInput = document.getElementById("tunumberoftickets");
+          const priceDisplay = document.getElementById("price");
+          const totalPriceDisplay = document.getElementById("totalprice");
+
+          const selectedTypeId = ticketTypeSelect.value;  // ✅ Use ID instead of name
+          console.log("Selected Ticket Type ID:", selectedTypeId);  // ✅ Debugging
+          console.log("Available Ticket Prices:", ticketPrices);  // ✅ Debugging
+
+          const ticketPrice = ticketPrices[selectedTypeId] || 0;  // ✅ Lookup price using ID
+          const quantity = Math.max(1, parseInt(quantityInput.value) || 1);
+
+          priceDisplay.textContent = `$${ticketPrice}`;
+          totalPriceDisplay.textContent = `$${ticketPrice * quantity}`;
+      }
+
+      // ✅ Ensure event listeners target the correct element
+      document.getElementById("ticket_type_id").addEventListener("change", updatePrices);
+      document.getElementById("tunumberoftickets").addEventListener("input", updatePrices);
+
+      fetchTicketPrices();
+    });
+    </script>
+</body>

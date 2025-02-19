@@ -1,0 +1,66 @@
+{% load static %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet" />
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark border-bottom">
+    <div class="container-fluid">
+      <a href="{% url 'index' %}" class="navbar-brand"
+        ><h1 class="nav-font">GetGig</h1></a
+      >
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a href="{% url 'about' %}" class="nav-item nav-link"
+            ><h2 class="nav-font">ABOUT</h2></a
+          >
+          <a href="{% url 'contact' %}" class="nav-item nav-link"
+            ><h2 class="nav-font">CONTACT</h2></a
+          >
+          <a href="{% url 'events' %}" class="nav-item nav-link"
+            ><h2 class="nav-font">EVENTS</h2></a
+          >
+          <!-- <a href="#" class="nav-item nav-link disabled" tabindex="-1"
+            >Reports</a
+          > -->
+          <!-- <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >MESSAGES</a
+            >
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Inbox</a>
+              <a href="#" class="dropdown-item">Sent</a>
+              <a href="#" class="dropdown-item">Drafts</a>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          {% include 'getgig/search.html' %}
+            {% if loggedIn %}
+              <a href="{% url 'mybookings' %}" class="nav-item nav-link">
+                  <h2 class="nav-font">MY BOOKINGS</h2>
+              </a>
+              <a href="{% url 'logout' %}" class="nav-item nav-link">
+                  <h2 class="nav-font">LOGOUT</h2>
+              </a>
+            {% else %}
+              <a href="{% url 'signin' %}" class="nav-item nav-link">
+                  <h2 class="nav-font">LOGIN</h2>
+              </a>
+              <a href="{% url 'register' %}" class="nav-item nav-link">
+                  <h2 class="nav-font">REGISTER</h2>
+              </a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>

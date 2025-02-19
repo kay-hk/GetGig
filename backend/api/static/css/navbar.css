@@ -1,0 +1,6 @@
+.navbar {
+  background-color: var(--background-color);
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}

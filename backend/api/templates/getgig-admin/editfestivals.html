@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Festival</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    {% load static %}
+    <link href="{% static 'css/addfestivals.css' %}" rel="stylesheet" />
+    {% include 'getgig/navbar.html' %}
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <form name="editfestivals" method="post" action="../inserteditfestivals">
+      {% csrf_token %}
+
+      <div>
+        <input type="hidden" id="festival_id" name="festival_id" />
+
+        <label for="festival_select">SELECT FESTIVAL TO EDIT:</label>
+        <select id="festival_select" name="festival_id" class="form-control">
+          <option value="" selected disabled>SELECT A FESTIVAL</option>
+          {% for festival in festivals %}
+          <option
+            value="{{ festival.fid }}"
+            data-fname="{{ festival.fname }}"
+            data-start_date="{{ festival.start_date }}"
+            data-end_date="{{ festival.end_date }}"
+            data-cid="{{ festival.city.cid }}"
+            data-playlist="{{ festival.playlist }}"
+            data-description="{{ festival.description }}"
+          >
+            {{ festival.fname }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label for="fname">NAME:</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="Edit festival name"
+        />
+      </div>
+
+      <div>
+        <label for="start_date">START DATE:</label>
+        <input
+          type="date"
+          id="start_date"
+          name="start_date"
+          placeholder="Edit start date"
+        />
+      </div>
+
+      <div>
+        <label for="end_date">END DATE:</label>
+        <input
+          type="date"
+          id="end_date"
+          name="end_date"
+          placeholder="Edit end date"
+        />
+      </div>
+
+      <div>
+        <label for="cid">CID:</label>
+        <input type="number" id="cid" name="cid" placeholder="Edit CID" />
+      </div>
+
+      <div>
+        <label for="playlist">PLAYLIST:</label>
+        <input
+          type="text"
+          id="playlist"
+          name="playlist"
+          placeholder="Edit playlist link"
+        />
+      </div>
+
+      <div>
+        <label for="description">DESCRIPTION:</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          placeholder="Edit festival description"
+        />
+      </div>
+
+      <div>
+        <input type="submit" name="updatefestival" value="EDIT FESTIVAL" />
+      </div>
+    </form>
+    {% include 'getgig/footer.html' %}
+  </body>
+</html>

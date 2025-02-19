@@ -1,0 +1,24 @@
+{% extends 'getgig/main.html' %}
+{% load static %}
+
+{% block content %}
+{% if query %}
+<div class="container-search">
+  <div class="container-inner">
+    <h2>SEARCH RESULTS FOR: {{ query|upper }}</h2>
+      {% if festivals %}
+    <ul>
+          {% for festival in festivals %}
+    <li>
+    <a href="{% url 'eventdetail' festival.fid %}">{{ festival.fname }}</a> - {{ festival.city.cname }}
+    </li>
+          {% endfor %}
+    </ul>
+      {% else %}
+    <p>No festivals found matching your search criteria.</p>
+      {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

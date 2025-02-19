@@ -1,0 +1,71 @@
+<div class="container-inner">
+  <style>.container-inner {
+  text-align: center;
+}
+  </style>
+ <h2>FILTER</h2>
+  <div id="filters" class="button-group">
+    <button class="glitch-button is-checked" data-filter="*">show all</button>
+    {% for genre in genres %}
+    <button class="glitch-button" data-filter=".{{ genre.gname|lower }}">
+      {{ genre.gname|lower }}
+    </button>
+    {% endfor %}
+  </div>
+
+  <p>
+    <h2>SORT</h2>
+    <div id="sorts" class="button-group">
+      <button class="glitch-button is-checked" data-sort-by="original-order">
+        original order
+      </button>
+      <button class="glitch-button" data-sort-by="name">name</button>
+      <button class="glitch-button" data-sort-by="date">date</button>
+    </div>
+  </p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Isotope on the grid container with sorting enabled
+    var iso = new Isotope(".grid .row", {
+      itemSelector: ".col-md-3 {{ festival.get_genre_classes }}",
+      layoutMode: "fitRows",
+      // Define sort data based on the text of the element with class "name"
+      getSortData: {
+        name: ".name",
+        date: ".date",
+      },
+    });
+
+    // Set up filter functionality
+    var filtersElem = document.querySelector("#filters");
+    filtersElem.addEventListener("click", function (event) {
+      if (!event.target.matches("button")) return;
+      var filterValue = event.target.getAttribute("data-filter");
+      iso.arrange({ filter: filterValue });
+
+      // Update active class on filter buttons
+      var filterButtons = filtersElem.querySelectorAll("button");
+      filterButtons.forEach(function (btn) {
+        btn.classList.remove("is-checked");
+      });
+      event.target.classList.add("is-checked");
+    });
+
+    // Set up sort functionality
+    var sortsElem = document.querySelector("#sorts");
+    sortsElem.addEventListener("click", function (event) {
+      if (!event.target.matches("button")) return;
+      var sortValue = event.target.getAttribute("data-sort-by");
+      iso.arrange({ sortBy: sortValue });
+
+      // Update active class on sort buttons
+      var sortButtons = sortsElem.querySelectorAll("button");
+      sortButtons.forEach(function (btn) {
+        btn.classList.remove("is-checked");
+      });
+      event.target.classList.add("is-checked");
+    });
+  });
+</script>

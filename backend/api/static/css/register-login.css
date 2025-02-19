@@ -1,0 +1,63 @@
+.register-login-book {
+  margin-top: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-login-book-form {
+  background-color: var(--background-overlay);
+  max-width: 500px;
+  width: 90%;
+  margin: auto;
+  padding: 30px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  font-family: "LemonMilk-Bold";
+  color: white;
+}
+
+input[type="email"],
+input[type="password"] {
+  font-family: "Lato";
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease-in-out;
+  font-size: 1.1em;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: black;
+  outline: none;
+}
+
+input[type="submit"] {
+  font-family: "Lato", sans-serif;
+  width: 100%;
+  padding: 14px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,67 @@
+{% extends 'getgig/main.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% load static %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+
+    <div class="section">
+      <section
+        class="carousel-background vh-100 justify-content-center align-items-start"
+      >
+        <div
+          id="carouselExampleFade"
+          class="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active lato-regular">
+              <img
+                src="{% static 'images/glastonbury.png' %}"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h2>GLASTONBURY</h2>
+                <h3>by kay & jaza</h3>
+              </div>
+            </div>
+            <div class="carousel-item lato-regular">
+              <img
+                src="{% static 'images/download.png' %}"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <a href="{% url 'eventdetail' 1 %}"><h2>DOWNLOAD</h2></a>
+                <h3>13th - 15th June 2025</h3>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  {# Overriding footer block to exclude the footer on index #}
+{% endblock %}

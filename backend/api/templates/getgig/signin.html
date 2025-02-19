@@ -1,0 +1,38 @@
+{% extends 'getgig/main.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% load static %}
+     <link href="{% static 'css/register-login.css' %}" rel="stylesheet" />
+    
+     <div class="register-login-book">
+      <form class="register-login-book-form" name="register" method="post" action="../custom_login">
+        {% csrf_token %}
+        <div>
+          <label for="tuemail">EMAIL:</label>
+          <input
+            type="email"
+            id="tuemail"
+            name="tuemail"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div>
+          <label for="tupassword">PASSWORD:</label>
+          <input
+            type="password"
+            id="tupassword"
+            name="tupassword"
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <div>
+          <input type="submit" name="reg" value="Sign in" />
+        </div>
+      </form>
+    </div>
+
+    {% endblock %}   

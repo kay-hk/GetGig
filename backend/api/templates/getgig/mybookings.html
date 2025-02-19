@@ -1,0 +1,37 @@
+{% extends 'getgig/main.html' %}
+
+{% block content %}
+    {% load static %}
+    <link href="{% static 'css/mybookings.css' %}" rel="stylesheet" />
+
+    <div class="container-inner"> 
+        <h2>FESTIVALS YOU HAVE BOOKED</h2>
+
+        {% if tickets %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Festival Name</th>
+                        <th>Festival Date</th>
+                        <th>Ticket Type</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.fid.fname }}</td>
+                            <td>{{ ticket.fid.start_date }} - {{ ticket.fid.end_date }}</td>
+                            <td>{{ ticket.ticket_type_id.ticket_type_name }}</td>
+                            <td>{{ ticket.ticket_quantity }}</td>
+                            <td>${{ ticket.total_price }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no upcoming festivals booked.</p>
+        {% endif %}
+    </div>
+{% endblock %}

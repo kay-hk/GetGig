@@ -1,0 +1,67 @@
+services:
+  web:
+    build: .
+    container_name: getgig
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+      prometheus:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - DATABASE_NAME=getgig
+      - DATABASE_USER=getgig_user
+      - DATABASE_PASSWORD=getgig_pass
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+    volumes:
+      - .:/getgig
+    working_dir: /getgig/backend
+    # user: "1000:1000"
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py seed_db && python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    image: mysql:8.0
+    container_name: getgig_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: getgig
+      MYSQL_USER: getgig_user
+      MYSQL_PASSWORD: getgig_pass
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+  
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  mysql_data:
+  grafana_data:

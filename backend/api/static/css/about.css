@@ -1,0 +1,34 @@
+.card {
+  background-color: var(--background-overlay);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 20vh;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1vw;
+}
+
+.card-content p {
+  font-family: "Lato", serif;
+  color: var(--text-color);
+}
+
+.card-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}

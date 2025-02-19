@@ -1,0 +1,47 @@
+{% extends 'getgig/main.html' %}
+
+{% block content %}
+
+    {% load static %}
+    <link href="{% static 'css/eventdetail.css' %}" rel="stylesheet" />
+
+    <div class="container">
+      <div class="container-inner">
+        <h2>{{ festival.fname }}</h2>
+        <p>{{ festival.description }}</p>
+        <p><h2>WHERE:</h2>
+        {{ festival.city.cname }}</p>
+        <p><h2>WHEN:</h2> {{ festival.start_date }} to {{ festival.end_date }}</p>
+        <h2>HEADLINERS</h2>
+        <ul>
+          {% for artist in artists %}
+          <li>{{ artist.aname }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container-inner">
+        <img
+          src="{{ festival.poster }}"
+          class="card-img-top"
+          alt="{{ festival.fname }}"
+        />
+      </div>
+      <div class="container-inner">
+        <h2>PLAYLIST</h2>
+        <iframe 
+        style="border-radius:12px" 
+        src="{{ festival.playlist }}" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+    </iframe>
+      </div>
+      <div class="container-inner">
+        <h2>BOOK TICKETS</h2>
+        {% include 'getgig/booking.html' with ticket_types=ticket_types %}
+      </div>
+    </div>
+{% endblock %}  

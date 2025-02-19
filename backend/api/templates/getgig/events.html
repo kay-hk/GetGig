@@ -1,0 +1,52 @@
+{% extends 'getgig/main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    {% load static %}
+    <link href="{% static 'css/events.css' %}" rel="stylesheet" />
+
+ {% include 'getgig/filter-sort.html' %}
+    <div class="container-isotophe">
+      <div class="grid">
+        <div class="row">
+          {% for festival in festivals %}
+          <div
+            class="col-md-3 {{ festival.get_genre_classes }} {{ festival.get_artist_classes }}"
+          >
+            <div class="card">
+              {% if festival.poster %}
+              <img
+                src="{{ festival.poster }}"
+                class="card-img-top"
+                alt="{{ festival.fname }}"
+              />
+              {% else %}
+              <!-- Optionally include a default image -->
+              <img
+                src="{% static 'images/placeholder.svg' %}"
+                class="card-img-top"
+                alt="{{ festival.fname }}"
+              />
+              {% endif %}
+              <div class="card-content">
+                <h2 class="name">{{ festival.fname }}</h2>
+                <p>{{ festival.description|truncatechars:150 }}</p>
+                <div class="card-footer">
+                  <span class="date"
+                    >Starts on {{ festival.start_date|date:"F d, Y" }}</span
+                  >
+                  <a href="{% url 'eventdetail' festival.fid %}">
+                    <button class="glitch-button">details</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

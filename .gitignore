@@ -1,0 +1,7 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/backend/api/__pycache__
+/backend/api/migrations/__pycache__
+.idea
+./backend/__pycache__

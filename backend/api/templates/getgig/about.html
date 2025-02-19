@@ -1,0 +1,74 @@
+{% extends 'getgig/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  .container-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+  </style>
+
+  <!-- Include additional CSS specific to the About page -->
+  <link href="{% static 'css/about.css' %}" rel="stylesheet" />
+
+  <div class="container">
+  <div class="container-inner">
+    
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate nulla sit amet eros eleifend placerat nec id mauris. Maecenas egestas rutrum maximus. Ut semper lectus vel enim bibendum tincidunt. Quisque aliquet dignissim sapien quis tristique. Pellentesque justo ex, consequat sed justo ac, pharetra imperdiet quam. Pellentesque eleifend sagittis varius. Nulla pretium consequat libero. Cras malesuada et augue ut consectetur. Donec tempus ipsum enim, et viverra est interdum lacinia. Aliquam sit amet congue ipsum. Sed cursus felis est, in elementum neque pretium vel. Nam molestie efficitur sodales. Nulla nec dictum odio. Proin enim diam, mattis id ex a, malesuada eleifend nisl. Mauris nec pulvinar ante. Donec in orci vel justo tincidunt rhoncus vel id mauris.
+
+Sed in est gravida, imperdiet lorem sit amet, facilisis risus. Nunc pharetra nibh in massa gravida, ut scelerisque sapien interdum. Nullam varius, turpis euismod viverra posuere, ligula sapien ultrices lacus, at porta nulla neque nec leo. Vivamus vel dolor at turpis aliquet vestibulum vehicula in lectus. Mauris id dolor mattis, luctus velit eu, molestie dolor. Aliquam erat volutpat. Sed tempus ipsum est, sit amet aliquet mi tincidunt eu.
+
+Donec turpis justo, pharetra eget euismod eget, placerat id sapien. Suspendisse nec vulputate magna, nec bibendum enim. Praesent vitae nisl ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean quis sapien venenatis, luctus lacus vitae, finibus nibh. Aenean non malesuada ligula. Nulla aliquam vestibulum porttitor. Aliquam non felis sed lorem euismod suscipit quis vitae ligula. Duis eget tellus eget felis pulvinar consectetur eget mattis mi. Phasellus ut leo quis purus rutrum vehicula. Nullam condimentum purus sit amet commodo cursus. Duis condimentum nulla eu felis luctus, in tincidunt tellus cursus. Aliquam ut posuere ligula, sit amet hendrerit mi.
+
+Nam imperdiet dolor a ipsum imperdiet interdum. Nulla dui turpis, placerat rhoncus augue at, ornare luctus magna. Etiam porta nisi vitae ullamcorper suscipit. Donec sodales venenatis odio, et hendrerit ex laoreet ac. Nam at hendrerit tortor. Ut quis lorem consequat, interdum turpis ac, aliquam sem. Vivamus pretium neque id orci semper posuere. Vestibulum ornare et justo ut porta. Maecenas ut tellus tristique, volutpat nunc non, congue libero. Maecenas id eros eu massa semper dignissim. Nulla pellentesque est convallis ipsum suscipit, at volutpat nibh mattis. Nulla pellentesque est vel magna mollis, nec dignissim nisl facilisis. Morbi viverra placerat ante, non aliquet nisl. Aliquam ac malesuada sapien, at vestibulum leo. Nam tincidunt ipsum id nibh luctus consectetur. Vestibulum tellus dolor, placerat eget quam non, venenatis pellentesque libero.
+
+Mauris nec nisl suscipit, pellentesque sem laoreet, ullamcorper eros. Praesent imperdiet magna id sapien varius, maximus gravida diam tempus. Etiam sed est fringilla, placerat urna at, semper ex. Donec nec luctus tellus. Pellentesque posuere metus nec quam dictum tristique. Nunc scelerisque, dolor malesuada viverra convallis, erat odio congue orci, in tincidunt nisi lectus in risus. Duis sagittis euismod enim, vel pharetra libero pretium eget. Sed interdum ut velit ullamcorper accumsan. Duis hendrerit iaculis nisi quis iaculis. Aenean condimentum magna ante, eget auctor urna lobortis porttitor. Donec vulputate, turpis a venenatis lobortis, mi quam dapibus ante, ut rutrum diam ipsum non lectus. Phasellus erat tellus, feugiat vitae dapibus ut, lacinia sit amet enim. Quisque ornare ullamcorper vulputate.
+
+Aenean nec nunc non quam ullamcorper malesuada. Proin vitae tincidunt tortor. Nam sagittis purus ac dolor molestie malesuada. In eu erat a nisi hendrerit mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris rutrum pellentesque ornare. Duis risus nisi, vehicula sed dapibus in, volutpat et lectus. Mauris efficitur malesuada quam, sed tempus ex maximus ac. Donec malesuada ut elit sed suscipit. Praesent vehicula dictum mattis. Fusce in fringilla augue, id lobortis felis. Duis et ligula et lacus gravida maximus. Praesent eleifend eu ante et euismod. Vivamus a diam arcu. Curabitur placerat finibus molestie. Quisque orci turpis, tristique iaculis lorem ac, scelerisque vestibulum urna. 
+  </div>
+
+    <div class="container-inner">
+      <article class="card">
+
+          <img src="{% static 'images/placeholder.svg' %}" alt="">
+
+        <div class="card-content">
+          <h2 class="name">KAY</h2>
+          <p>About me</p>
+          <div class="card-social">
+            <div class="social-icons">
+              <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+              <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+      </div>
+
+
+      <div class="container-inner">
+        <article class="card">
+          <img src="{% static 'images/placeholder.svg' %}" alt="">
+          <div class="card-content">
+            <h2 class="name">JAZA</h2>
+            <p>About me</p>
+            <div class="card-social">
+              <div class="social-icons">
+                <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+      </article>
+  </div>
+  </div>
+{% endblock %}
